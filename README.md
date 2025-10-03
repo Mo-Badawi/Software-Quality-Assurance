@@ -4,12 +4,12 @@ Welcome to my **Software Quality Assurance (SQA) Portfolio**.
 This repository contains all my **manual and automation testing projects**, documentation, and deliverables across multiple domains (web, mobile, and API testing).  
 
 The repo demonstrates my skills in:
-- 📋 Test Documentation (SRS, Test Plans, Test Cases, RTM, Bug Reports, Test Summary Reports)  
+- 📋 Test Documentation (SRS, Test Plans, Test Cases Design, RTM, Bug Reports, Test Summary Reports)  
 - ⚙️ Manual Testing (Functional, Usability, Regression, Exploratory)  
 - 🤖 Automation Testing (Selenium – Java – TestNG – Maven, Appium for Mobile Testing)  
 - 📊 Performance Testing (JMeter)  
-- 🔌 API Testing (Postman, Rest Assured)  
-- 🛠️ QA Tools: GitHub, Jenkins, VS Code, Eclipse, Android Studio  
+- 🔌 API Testing (Postman)  
+- 🛠️ QA Tools: Eclipse, Appium, Android Studio, Jira, Trello, GitHub. 
 
 ---
 
@@ -48,11 +48,12 @@ Here you’ll find all of my structured QA projects with complete documentation:
 
 | Area                | Tools / Tech |
 |---------------------|--------------|
-| Test Documentation | Word, Excel, PDF |
-| Manual Testing      | Web, Mobile, API |
-| Test Automation     | Selenium (Java, TestNG), Appium, Rest Assured |
+| Test Documentation  | Google Docs, Google Sheets, Word, Excel, PDF |
+| Manual Testing      | Web, Mobile, API, Database |
+| Test Automation     | Selenium (Java, TestNG), Appium |
 | Performance Testing | JMeter |
-| API Testing         | Postman, Swagger |
+| API Testing         | Postman |
+| Database Testing    | MySQL Workbench |
 | Version Control     | Git, GitHub |
 | IDEs & Tools        | Eclipse, VS Code, Android Studio |
 
@@ -62,7 +63,8 @@ Here you’ll find all of my structured QA projects with complete documentation:
 I am **Mohammad Badawi**, a passionate **QA Engineer** focused on delivering high-quality software through structured testing processes.  
 - 🎓 Background: MIS graduate, IT administrator experience  
 - 🚀 Career Goal: Become a **full-stack QA Engineer** (Manual + Automation + Performance + API Testing)  
-- 📚 Current Learning: Selenium Page Object Model (POM), Appium Multi-device Testing, Advanced JMeter, WordPress for e-commerce  
+- 📚 Current Learning: Selenium Page Object Model (POM), Appium Multi-device Testing, Advanced JMeter, SEO for E-Commerce
+- 🔮 Future Learning: Front-End Development to gain a full understanding of how a web application works, which will enhance my QA level in understanding the software.  
 
 ---
 
