@@ -17,7 +17,7 @@ The repo demonstrates my skills in:
 
 Here you’ll find all of my structured QA projects with complete documentation:
 
-### 1. [ShihabVet – E-commerce Website Testing](./ShihabVet Manual Testing)
+### 1. [ShihabVet – E-commerce Website Testing](ShihabVet Manual Testing)
 - Full QA cycle: **SRS, Test Plan, Test Cases, Bug Report, RTM, Test Summary**  
 - Manual testing of sign-up, login, cart, checkout, address, account settings, and admin filters  
 - Found 17 critical defects (weak validations, broken filters, missing features)
