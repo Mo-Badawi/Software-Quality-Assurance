@@ -71,6 +71,6 @@ I am **Mohammad Badawi**, a passionate **QA Engineer** focused on delivering hig
 ## 📬 Contact
 - 📧 Email: [mohammadadbadawi@gmail.com](mailto:mohammadadbadawi@gmail.com)  
 - 💼 LinkedIn: [linkedin.com/in/mohammadadbadawi](https://linkedin.com)  
-- 🐙 GitHub: [github.com/BadawiQA](https://github.com/BadawiQA)  
+- 🐙 GitHub: [github.com/BadawiQA](https://github.com/Mo-Badawi)  
 
 ---
