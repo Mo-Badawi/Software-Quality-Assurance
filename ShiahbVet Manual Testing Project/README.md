@@ -1,4 +1,4 @@
-# 🐾 ShihabVet.com – Software Quality Assurance Project
+# 🐾 ShihabVet.com – Manual Testing Project
 
 This repository contains the **manual Software Quality Assurance (SQA) deliverables** for the **ShihabVet.com** e-commerce platform. The goal of this project was to ensure the quality, reliability, and usability of the website before launch by performing structured testing activities.
 
