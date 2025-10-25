@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite1" verbose="1">
+  <test name="OrangeHRM" parallel="classes" thread-count="5">
+  
+  	<classes>
+    	<class name="OrangeHRM.TS1_JobTitles"></class>
+    	<class name="OrangeHRM.TS2_PayGrades"></class>
+    	<class name="OrangeHRM.TS3_EmploymentStatus"></class>
+    	<class name="OrangeHRM.TS4_JobCategories"></class>
+    	<class name="OrangeHRM.TS5_WorkShifts"></class>
+   </classes>
+   
+ </test>
+</suite>
