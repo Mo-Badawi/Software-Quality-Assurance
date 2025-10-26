@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite1]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" parallel="classes" name="OrangeHRM(failed)">
+    <classes>
+      <class name="OrangeHRM.TS1_JobTitles">
+        <methods>
+          <include name="AddNewTitleSpecialCharacter"/>
+          <include name="EditexistingJobTitle"/>
+          <include name="tearDown"/>
+          <include name="DeleteAllTitles"/>
+          <include name="DeleteJobTitle"/>
+          <include name="AddNewTitle"/>
+          <include name="setUp"/>
+          <include name="AddDuplicatedTitle"/>
+          <include name="SetUpDashboard"/>
+          <include name="AddNewTitleEmptyTitle"/>
+          <include name="AddNewTitleLong"/>
+        </methods>
+      </class> <!-- OrangeHRM.TS1_JobTitles -->
+      <class name="OrangeHRM.TS2_PayGrades">
+        <methods>
+          <include name="DeletePayGrade"/>
+          <include name="AddNewPayGradeEmptyName"/>
+          <include name="tearDown"/>
+          <include name="SetUpDashboard"/>
+          <include name="DeleteCurrencyRow"/>
+          <include name="AddNewPayGrade"/>
+          <include name="setUp"/>
+          <include name="EditPayGradeName"/>
+          <include name="AddNewCurrencyWithValidMinMaxValues"/>
+          <include name="ValidateMinMustBeLessThanMax"/>
+        </methods>
+      </class> <!-- OrangeHRM.TS2_PayGrades -->
+      <class name="OrangeHRM.TS4_JobCategories">
+        <methods>
+          <include name="tearDown"/>
+          <include name="DeleteMultiCategory"/>
+          <include name="PreventCategoryDuplication"/>
+          <include name="DeleteCategory"/>
+          <include name="SetUpDashboard"/>
+          <include name="EditCategoryName"/>
+          <include name="setUp"/>
+          <include name="CreateNewCategory"/>
+          <include name="AddCategoryEmptyName"/>
+        </methods>
+      </class> <!-- OrangeHRM.TS4_JobCategories -->
+      <class name="OrangeHRM.TS5_WorkShifts">
+        <methods>
+          <include name="ValidateFromLessThanTo"/>
+          <include name="DeleteWorkShift"/>
+          <include name="tearDown"/>
+          <include name="SetUpDashboard"/>
+          <include name="AddWorkShift"/>
+          <include name="RemoveEmployeeFromWorkShift"/>
+          <include name="AssignEmployeeToWorkShift"/>
+          <include name="setUp"/>
+          <include name="AddOverLapWorkShift"/>
+          <include name="AddWorkShiftEmptyName"/>
+        </methods>
+      </class> <!-- OrangeHRM.TS5_WorkShifts -->
+      <class name="OrangeHRM.TS3_EmploymentStatus">
+        <methods>
+          <include name="DeleteAllEmpStatus"/>
+          <include name="tearDown"/>
+          <include name="DeleteEmpStatus"/>
+          <include name="SetUpDashboard"/>
+          <include name="CreateEmploymentStatus"/>
+          <include name="setUp"/>
+          <include name="PreventDuplicatedEmpStatusNames"/>
+          <include name="EditEmpStatus"/>
+          <include name="ValidateNameRequired"/>
+        </methods>
+      </class> <!-- OrangeHRM.TS3_EmploymentStatus -->
+    </classes>
+  </test> <!-- OrangeHRM(failed) -->
+</suite> <!-- Failed suite [Suite1] -->
