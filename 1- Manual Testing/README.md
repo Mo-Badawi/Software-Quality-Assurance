@@ -17,8 +17,8 @@ This folder contains all my **Manual Testing** projects, where I focus on design
 
 ## 🛠 Tools Used
 - Jira  
-- Excel / Google Sheets  
-- TestLink  
-- Xray for Jira  
+- Excel / Google Sheets
+- Word / Google Docs  
+- Trello 
 
 ---
