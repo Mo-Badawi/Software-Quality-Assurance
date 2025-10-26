@@ -6,7 +6,8 @@ This folder includes projects focused on **Test Automation**, demonstrating my a
 - Java programming language
 - Selenium 
 - TestNG
-- Maven 
+- Maven
+- Eclipse IDE
 
 ## 🧠 Skills Demonstrated
 - Framework design (Data-driven, Hybrid, Page Object Model)  
