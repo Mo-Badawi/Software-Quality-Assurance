@@ -2,7 +2,7 @@
 
 Welcome to my **Software Quality Assurance (SQA) Portfolio** 👋  
 This repository showcases my hands-on experience in **manual**, **automation**, **mobile**, and **API testing** across multiple domains.  
-It includes complete QA documentation, test design artifacts, and project deliverables demonstrating end-to-end software testing workflows.
+It includes comprehensive QA documentation, test design artefacts, and project deliverables that demonstrate end-to-end software testing workflows.
 
 ---
 
@@ -19,7 +19,7 @@ It includes complete QA documentation, test design artifacts, and project delive
 
 ## 📂 Featured Projects
 
-### 1. 🛍️ **ShihabVet – E-commerce Website Testing**
+### 1. 🛍️ **ShihabVet – E-commerce Website Testing** (1-%20Manual%20Testing%20Projects/)
 - Full QA cycle: SRS, Test Plan, Test Cases, Bug Report, RTM, and Test Summary  
 - Manual testing for sign-up, login, cart, checkout, address management, and admin filters  
 - Identified **17 critical defects** (validation issues, broken filters, missing features)
