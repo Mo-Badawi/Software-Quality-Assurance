@@ -1,76 +1,91 @@
 # 🧪 Software Quality Assurance (SQA) Portfolio – Mohammad Badawi
 
-Welcome to my **Software Quality Assurance (SQA) Portfolio**.  
-This repository contains all my **manual and automation testing projects**, documentation, and deliverables across multiple domains (web, mobile, and API testing).  
-
-The repo demonstrates my skills in:
-- 📋 Test Documentation (SRS, Test Plans, Test Cases Design, RTM, Bug Reports, Test Summary Reports)  
-- ⚙️ Manual Testing (Functional, Usability, Regression, Exploratory)  
-- 🤖 Automation Testing (Selenium – Java – TestNG – Maven, Appium for Mobile Testing)  
-- 📊 Performance Testing (JMeter)  
-- 🔌 API Testing (Postman)  
-- 🛠️ QA Tools: Eclipse, Appium, Android Studio, Jira, Trello, GitHub. 
+Welcome to my **Software Quality Assurance (SQA) Portfolio** 👋  
+This repository showcases my hands-on experience in **manual**, **automation**, **mobile**, and **API testing** across multiple domains.  
+It includes complete QA documentation, test design artifacts, and project deliverables demonstrating end-to-end software testing workflows.
 
 ---
 
-## 📂 Projects
+## 🎯 What This Portfolio Demonstrates
 
-Here you’ll find all of my structured QA projects with complete documentation:
+✅ **Test Documentation** – SRS, Test Plans, Test Case Design, RTM, Bug Reports, Test Summary Reports  
+✅ **Manual Testing** – Functional, Usability, Regression, and Exploratory Testing  
+✅ **Automation Testing** – Selenium (Java, TestNG, Maven), Appium for Mobile Testing  
+✅ **API Testing** – Postman and REST Assured (Java)  
+✅ **Performance Testing** – JMeter  
+✅ **Tools & Platforms** – Eclipse, Appium, Android Studio, Jira, Trello, GitHub  
 
-### 1. [ShihabVet – E-commerce Website Testing](./1-%20ShihabVet%20Manual%20Testing)
-- Full QA cycle: **SRS, Test Plan, Test Cases, Bug Report, RTM, Test Summary**  
-- Manual testing of sign-up, login, cart, checkout, address, account settings, and admin filters  
-- Found 17 critical defects (weak validations, broken filters, missing features)
+---
 
-### 2. [OrangeHRM – HR Management System Testing](./1-%20OrangeHRM%20Automation%20Project)
-- Coverage of **Admin, Job Titles, Pay Grades, Work Shifts**  
-- Test Plan, RTM, and 100+ test cases  
-- Manual + planned Selenium automation  
+## 📂 Featured Projects
 
-### 3. [Wikipedia – Mobile App Testing](./Wikipedia)
-- Appium-based test automation on Android Emulator  
-- Workflows: Search, Save Article, Language Switch, Settings  
-- RTM + Bug Reports  
+### 1. 🛍️ **ShihabVet – E-commerce Website Testing**
+- Full QA cycle: SRS, Test Plan, Test Cases, Bug Report, RTM, and Test Summary  
+- Manual testing for sign-up, login, cart, checkout, address management, and admin filters  
+- Identified **17 critical defects** (validation issues, broken filters, missing features)
 
-### 4. [Duolingo – Mobile App Testing](./Duolingo)
-- Functional test cases for login, lessons, notifications  
-- Appium automation for UI flows  
-- JMeter scripts for **performance analysis** (app launch, login, lesson load time)  
+---
 
-### 5. [Simple Books API – API Testing](./SimpleBooksAPI)
-- Postman & JMeter workflows for CRUD operations  
-- Test cases for **orders, authentication, error handling**  
-- RTM + Automation scripts with Rest Assured  
+### 2. 🧑‍💼 **OrangeHRM – HR Management System Testing**
+- Covered Admin features: Job Titles, Pay Grades, Work Shifts  
+- Created a detailed **Test Plan**, **RTM**, and **100+ test cases**  
+- Manual testing with planned Selenium automation suite
+
+---
+
+### 3. 📱 **Wikipedia – Mobile App Testing**
+- Appium automation using Android Emulator  
+- Tested workflows: Search, Save Article, Language Switch, Settings  
+- Included RTM and detailed bug reports for each flow  
+
+---
+
+### 4. 🧩 **Duolingo – Mobile App Testing**
+- Functional test cases for login, lessons, and notifications  
+- Appium-based UI automation  
+- JMeter scripts to measure app performance (launch time, login, lesson load time)
+
+---
+
+### 5. 🔗 **Simple Books API – API Testing**
+- Postman and JMeter test workflows for CRUD operations  
+- Covered orders, authentication, and error-handling scenarios  
+- RTM and automation scripts using REST Assured (Java)
 
 ---
 
 ## 🛠️ Skills Matrix
 
-| Area                | Tools / Tech |
-|---------------------|--------------|
-| Test Documentation  | Google Docs, Google Sheets, Word, Excel, PDF |
-| Manual Testing      | Web, Mobile, API, Database |
-| Test Automation     | Selenium (Java, TestNG), Appium |
-| Performance Testing | JMeter |
-| API Testing         | Postman |
-| Database Testing    | MySQL Workbench |
-| Version Control     | Git, GitHub |
-| IDEs & Tools        | Eclipse, VS Code, Android Studio |
+| Area | Tools / Technologies |
+|------|----------------------|
+| **Test Documentation** | Google Docs, Sheets, Word, Excel, PDF |
+| **Manual Testing** | Web, Mobile, API, Database |
+| **Test Automation** | Selenium (Java, TestNG), Appium |
+| **Performance Testing** | JMeter |
+| **API Testing** | Postman, REST Assured |
+| **Database Testing** | MySQL Workbench |
+| **Version Control** | Git, GitHub |
+| **IDEs & Tools** | Eclipse, VS Code, Android Studio |
 
 ---
 
 ## 👤 About Me
-I am **Mohammad Badawi**, a passionate **QA Engineer** focused on delivering high-quality software through structured testing processes.  
-- 🎓 Background: MIS graduate, IT administrator experience  
-- 🚀 Career Goal: Become a **full-stack QA Engineer** (Manual + Automation + Performance + API Testing)  
-- 📚 Current Learning: Selenium Page Object Model (POM), Appium Multi-device Testing, Advanced JMeter, SEO for E-Commerce
-- 🔮 Future Learning: Front-End Development to gain a full understanding of how a web application works, which will enhance my QA level in understanding the software.  
+
+I’m **Mohammad Badawi**, a passionate **Software QA Engineer** dedicated to delivering high-quality, user-focused software through structured and efficient testing practices.
+
+🎓 **Background:** MIS Graduate with IT Administration experience  
+🚀 **Career Goal:** Become a full-stack QA Engineer (Manual + Automation + Performance + API Testing)  
+📚 **Currently Learning:** Selenium POM, Appium Multi-device Testing, Advanced JMeter, SEO for E-Commerce  
+🔮 **Future Focus:** Front-end development to strengthen my understanding of software architecture and enhance my QA capabilities
 
 ---
 
 ## 📬 Contact
-- 📧 Email: [mohammadadbadawi@gmail.com](mailto:mohammadadbadawi@gmail.com)  
-- 💼 LinkedIn: [linkedin.com/in/mohammadadbadawi](https://linkedin.com)  
-- 🐙 GitHub: [github.com/Mo-Badawi](https://github.com/Mo-Badawi)  
+
+📧 **Email:** [mohammadadbadawi@gmail.com](mailto:mohammadadbadawi@gmail.com)  
+💼 **LinkedIn:** [linkedin.com/in/mohammadadbadawi](https://linkedin.com/in/mohammadadbadawi)  
+🐙 **GitHub:** [github.com/Mo-Badawi](https://github.com/Mo-Badawi)
 
 ---
+
+⭐ *If you find this portfolio useful or inspiring, feel free to star the repository and connect — let’s keep building quality together!*
