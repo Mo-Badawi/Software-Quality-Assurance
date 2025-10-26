@@ -22,7 +22,7 @@ Here you’ll find all of my structured QA projects with complete documentation:
 - Manual testing of sign-up, login, cart, checkout, address, account settings, and admin filters  
 - Found 17 critical defects (weak validations, broken filters, missing features)
 
-### 2. [OrangeHRM – HR Management System Testing](./OrangeHRM)
+### 2. [OrangeHRM – HR Management System Testing](./OrangeHRM%20Automation%20Project)
 - Coverage of **Admin, Job Titles, Pay Grades, Work Shifts**  
 - Test Plan, RTM, and 100+ test cases  
 - Manual + planned Selenium automation  
