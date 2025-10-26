@@ -19,7 +19,7 @@ It includes comprehensive QA documentation, test design artefacts, and project d
 
 ## 📂 Featured Projects
 
-### 1. 🛍️ **ShihabVet – E-commerce Website Testing** (1-%20Manual%20Testing%20Projects/)
+### 1. 🛍️ **[ShihabVet – E-commerce Website Testing]** (1-%20Manual%20Testing%20Projects/)
 - Full QA cycle: SRS, Test Plan, Test Cases, Bug Report, RTM, and Test Summary  
 - Manual testing for sign-up, login, cart, checkout, address management, and admin filters  
 - Identified **17 critical defects** (validation issues, broken filters, missing features)
