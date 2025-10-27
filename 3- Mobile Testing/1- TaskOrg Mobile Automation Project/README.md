@@ -1,8 +1,8 @@
-# Mobile-Testing-Project
-# 📱 Mobile Testing Project
+# Tasks.org Application-Testing-Project
+# 📱 Tasks.org Application Testing Project
 
 This repository contains automated test scripts for different mobile applications using **Appium**, **Android Studio**, **Selenium**, and **TestNG**.  
-It is part of a QA bootcamp/team project focused on building a complete mobile automation testing framework.
+It is part of a QA boot camp/team project focused on building a comprehensive mobile automation testing framework.
 
 ---
 
