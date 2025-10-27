@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Mobile Testing Project]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="DolingoMobile Testing Project(failed)">
+    <classes>
+      <class name="Badawi_Test.TS4_CompleteTask">
+        <methods>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="testAddSimpleTask"/>
+        </methods>
+      </class> <!-- Badawi_Test.TS4_CompleteTask -->
+      <class name="Badawi_Test.TS3_DeleteTask">
+        <methods>
+          <include name="DeleteMixedTask"/>
+          <include name="DeleteFromSearch"/>
+          <include name="DeleteMultipleTasks"/>
+          <include name="AddDemoTasks"/>
+          <include name="DeleteTask"/>
+          <include name="tearDown"/>
+          <include name="setUp"/>
+          <include name="DeleteAllTask"/>
+          <include name="ClearCompleteTask"/>
+          <include name="DeleteFromTask"/>
+          <include name="CancelDeleteTask"/>
+        </methods>
+      </class> <!-- Badawi_Test.TS3_DeleteTask -->
+    </classes>
+  </test> <!-- DolingoMobile Testing Project(failed) -->
+</suite> <!-- Failed suite [Mobile Testing Project] -->
