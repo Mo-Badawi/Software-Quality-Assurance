@@ -13,6 +13,6 @@ This folder contains **API Testing** projects focused on verifying backend logic
 - JavaScript programming language
 
 ## 📁 Example Projects
-- Bookstore API Validation  
+- Contact List App API Validation  
 
 ---
