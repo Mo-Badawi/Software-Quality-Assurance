@@ -1,12 +1,10 @@
-# Recreate README.md file for Mohammad Badawi's Contact List App API Testing Project
-
-readme_content = """# 📞 Contact List App – API Testing Project
+## 📞 Contact List App – API Testing Project
 
 ## 🧪 Overview
 This repository contains the **API Testing Project** for the **Contact List App**, designed and executed entirely by **Mohammad Badawi**.  
 It demonstrates a complete **Software Quality Assurance (SQA)** lifecycle for RESTful APIs — including **test planning, design, execution, reporting,** and **traceability**.  
 
-The primary objective is to validate that all API endpoints function as specified, ensuring **reliability**, **secure authorization**, and **optimal performance**.
+The primary objective is to validate that all API endpoints function as specified, ensuring **reliability**, **secure authorisation**, and **optimal performance**.
 
 ---
 
@@ -167,3 +165,4 @@ with open(file_path, "w", encoding="utf-8") as f:
     f.write(readme_content)
 
 file_path
+
