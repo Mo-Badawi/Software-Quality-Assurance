@@ -1,0 +1,2071 @@
+{
+	"info": {
+		"_postman_id": "b3e48dbf-0653-4f80-99a5-ebb46668a9a6",
+		"name": "1- Contact List App API Testing",
+		"description": "This is the API for the Contact List App: \nhttps://thinking-tester-contact-list.herokuapp.com/",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46896864"
+	},
+	"item": [
+		{
+			"name": "Set up the Environment",
+			"item": [
+				{
+					"name": "Create Environment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "PMAK-6883a371465c8a0001be34f5-9dfa5e8dd14a37cc6f835186ba8cceaca7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"environment\": {\r\n    \"name\": \"Testing Environment\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.getpostman.com/environments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"environments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Existing Environments",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const targetEnvName = \"Testing Environment\";\r",
+									"\r",
+									"let environments = pm.response.json().environments;\r",
+									"\r",
+									"for (let i = 0; i < environments.length; i++) {\r",
+									"    if (environments[i].name === targetEnvName) {\r",
+									"        let envUID = environments[i].uid;\r",
+									"        pm.environment.set(\"env_uid\", envUID);\r",
+									"        var badawiID = envUID;\r",
+									"        pm.globals.set(\"env_uid\", badawiID);\r",
+									"        console.log(\"Environment UID stored:\", envUID);\r",
+									"        \r",
+									"    }\r",
+									"}"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "PMAK-6883a371465c8a0001be34f5-9dfa5e8dd14a37cc6f835186ba8cceaca7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.getpostman.com/environments",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"environments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Env Variables",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "PMAK-6883a371465c8a0001be34f5-9dfa5e8dd14a37cc6f835186ba8cceaca7",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"environment\": {\r\n    \"name\": \"Testing Environment\",\r\n    \"values\": [\r\n      {\r\n        \"key\": \"authToken\",\r\n        \"value\": \"\",\r\n        \"enabled\": true\r\n      },\r\n      {\r\n        \"key\": \"id\",\r\n        \"value\": \"\",\r\n        \"enabled\": true\r\n      }\r\n    ]\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.getpostman.com/environments/{{env_uid}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"environments",
+								"{{env_uid}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign Up to get Global Token",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"        if (jsonData.token) {\r",
+									"            pm.environment.set(\"authToken\", jsonData.token);\r",
+									"        }\r",
+									"        \r",
+									"var badawiToken = jsonData.token;\r",
+									"pm.globals.set(\"authToken\" , badawiToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n                \"firstName\": \"Mohammad\",\r\n                \"lastName\": \"Badawi\",\r\n                \"email\": \"mohammadbadaw@badawi.com\",\r\n                \"password\": \"Mb12345@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\",\n    \"email\": \"test@fake.com\",\n    \"password\": \"myPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"608b2db1add2691791c04c89\",\n        \"firstName\": \"Test\",\n        \"lastName\": \"User\",\n        \"email\": \"test@fake.com\",\n        \"__v\": 1\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDhiMmRiMWFkZDI2OTE3OTFjMDRjODgiLCJpYXQiOjE2MTk3MzM5Mzd9.06wN8dRBLkFiS_m2XdY6h4oLx3nMeupHvv-3C2AEKlY\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete Environment (Don't Run with collection)",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-api-key",
+								"value": "PMAK-6883a371465c8a0001be34f5-7cafc085996866693d2247932c5870dad9",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.getpostman.com/environments/{{env_uid}}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"getpostman",
+								"com"
+							],
+							"path": [
+								"environments",
+								"{{env_uid}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Delete User Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "The DELETE User operation is not available through the UI."
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Sign Up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"        if (jsonData.token) {\r",
+									"            pm.environment.set(\"authToken\", jsonData.token);\r",
+									"        }\r",
+									"        \r",
+									"var badawiToken = jsonData.token;\r",
+									"pm.globals.set(\"authToken\" , badawiToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n                \"firstName\": \"Mohammad\",\r\n                \"lastName\": \"Badawi\",\r\n                \"email\": \"mohammadbadaw@badawi.com\",\r\n                \"password\": \"Mb12345@\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\",\n    \"email\": \"test@fake.com\",\n    \"password\": \"myPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users"
+									]
+								}
+							},
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"608b2db1add2691791c04c89\",\n        \"firstName\": \"Test\",\n        \"lastName\": \"User\",\n        \"email\": \"test@fake.com\",\n        \"__v\": 1\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDhiMmRiMWFkZDI2OTE3OTFjMDRjODgiLCJpYXQiOjE2MTk3MzM5Mzd9.06wN8dRBLkFiS_m2XdY6h4oLx3nMeupHvv-3C2AEKlY\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Log In User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"        if (jsonData.token) {\r",
+									"            pm.environment.set(\"authToken\", jsonData.token);\r",
+									"        }\r",
+									"    \r",
+									"var badawiToken = jsonData.token;\r",
+									"pm.globals.set(\"authToken\" , badawiToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mohammadbadaw@badawi.com\",\n    \"password\": \"Mb12345@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Log In User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test2@fake.com\",\n    \"password\": \"myNewPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/login",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"608b2db1add2691791c04c89\",\n        \"firstName\": \"Updated\",\n        \"lastName\": \"Username\",\n        \"email\": \"test2@fake.com\",\n        \"__v\": 212\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgyMWYzMDYyZmJiMjEzZTJhZDlhMjAiLCJpYXQiOjE2MTk3MzQ0NDB9.4CftGzYRmK04PJv6xKqmWWo9iOH2wlizEU8vk-L48LI\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get User Profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "The GET User Profile operation is not available through the UI."
+					},
+					"response": [
+						{
+							"name": "Get User Profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"608b2db1add2691791c04c89\",\n    \"firstName\": \"Test\",\n    \"lastName\": \"User\",\n    \"email\": \"test@fake.com\",\n    \"__v\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Badawi\",\n    \"lastName\": \"Mohammad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "The PATCH Update User operation is not available through the UI."
+					},
+					"response": [
+						{
+							"name": "Update User",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Updated\",\n    \"lastName\": \"Username\",\n    \"email\": \"test2@fake.com\",\n    \"password\": \"myNewPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"608b2db1add2691791c04c89\",\n    \"firstName\": \"Updated\",\n    \"lastName\": \"Username\",\n    \"email\": \"test2@fake.com\",\n    \"__v\": 1\n}"
+						}
+					]
+				},
+				{
+					"name": "Log Out User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/logout",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"logout"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Log Out User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/logout",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"logout"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Log In User again",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"        if (jsonData.token) {\r",
+									"            pm.environment.set(\"authToken\", jsonData.token);\r",
+									"        }\r",
+									"\r",
+									"var badawiToken = jsonData.token;\r",
+									"pm.globals.set(\"authToken\" , badawiToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"mohammadbadaw@badawi.com\",\n    \"password\": \"Mb12345@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/login",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Log In User",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test2@fake.com\",\n    \"password\": \"myNewPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/login",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"user\": {\n        \"_id\": \"608b2db1add2691791c04c89\",\n        \"firstName\": \"Updated\",\n        \"lastName\": \"Username\",\n        \"email\": \"test2@fake.com\",\n        \"__v\": 212\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MDgyMWYzMDYyZmJiMjEzZTJhZDlhMjAiLCJpYXQiOjE2MTk3MzQ0NDB9.4CftGzYRmK04PJv6xKqmWWo9iOH2wlizEU8vk-L48LI\"\n}"
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Contacts",
+			"item": [
+				{
+					"name": "Add Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mohammad\",\n    \"lastName\": \"Badawi\",\n    \"birthdate\": \"1975-01-01\",\n    \"email\": \"jdoe@fake.com\",\n    \"phone\": \"8005555555\",\n    \"street1\": \"1 Main St.\",\n    \"street2\": \"Apartment A\",\n    \"city\": \"Anytown\",\n    \"stateProvince\": \"KS\",\n    \"postalCode\": \"12345\",\n    \"country\": \"USA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Add Contact",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"birthdate\": \"1970-01-01\",\n    \"email\": \"jdoe@fake.com\",\n    \"phone\": \"8005555555\",\n    \"street1\": \"1 Main St.\",\n    \"street2\": \"Apartment A\",\n    \"city\": \"Anytown\",\n    \"stateProvince\": \"KS\",\n    \"postalCode\": \"12345\",\n    \"country\": \"USA\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6085a221fcfc72405667c3d4\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"birthdate\": \"1970-01-01\",\n    \"email\": \"jdoe@fake.com\",\n    \"phone\": \"8005555555\",\n    \"street1\": \"1 Main St.\",\n    \"street2\": \"Apartment A\",\n    \"city\": \"Anytown\",\n    \"stateProvince\": \"KS\",\n    \"postalCode\": \"12345\",\n    \"country\": \"USA\",\n    \"owner\": \"6085a21efcfc72405667c3d4\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Contact List",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"let response = pm.response.json();\r",
+									"let randomContact = response[Math.floor(Math.random() * response.length)];\r",
+									"pm.environment.set(\"id\", randomContact._id);\r",
+									"\r",
+									"var badawiID = randomContact._id;\r",
+									"pm.globals.set(\"id\" , badawiID);\r",
+									"\r",
+									"pm.test(\"Contact list is not empty\", function () {\r",
+									"    const data = pm.response.json();\r",
+									"    pm.expect(data.length).to.be.above(0);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Contact List",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "[\n    {\n        \"_id\": \"6085a221fcfc72405667c3d4\",\n        \"firstName\": \"John\",\n        \"lastName\": \"Doe\",\n        \"birthdate\": \"1970-01-01\",\n        \"email\": \"jdoe@fake.com\",\n        \"phone\": \"8005555555\",\n        \"street1\": \"1 Main St.\",\n        \"street2\": \"Apartment A\",\n        \"city\": \"Anytown\",\n        \"stateProvince\": \"KS\",\n        \"postalCode\": \"12345\",\n        \"country\": \"USA\",\n        \"owner\": \"6085a21efcfc72405667c3d4\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"607b29861ba4d3a0b96733bc\",\n        \"firstName\": \"Jan\",\n        \"lastName\": \"Brady\",\n        \"birthdate\": \"2001-11-11\",\n        \"email\": \"fake2@gmail.com\",\n        \"phone\": \"8008675309\",\n        \"street1\": \"100 Elm St.\",\n        \"city\": \"Springfield\",\n        \"stateProvince\": \"NE\",\n        \"postalCode\": \"23456\",\n        \"country\": \"United States\",\n        \"owner\": \"6085a21efcfc72405667c3d4\",\n        \"__v\": 0\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Get Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 OK\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response has a contact with First Name: Mohammad\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.firstName).to.eql(\"Mohammad\");\r",
+									"});\r",
+									"\r",
+									"    pm.test(\"Response has the contact's ID?\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"_id\");});\r",
+									"\r",
+									"    pm.test(\"Response has the contact's full data?\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData).to.have.property(\"firstName\");\r",
+									"    pm.expect(jsonData).to.have.property(\"lastName\");\r",
+									"    pm.expect(jsonData).to.have.property(\"birthdate\");\r",
+									"    pm.expect(jsonData).to.have.property(\"email\");\r",
+									"    pm.expect(jsonData).to.have.property(\"phone\");\r",
+									"    pm.expect(jsonData).to.have.property(\"street1\");\r",
+									"    pm.expect(jsonData).to.have.property(\"street2\");\r",
+									"    pm.expect(jsonData).to.have.property(\"city\");\r",
+									"    pm.expect(jsonData).to.have.property(\"stateProvince\");\r",
+									"    pm.expect(jsonData).to.have.property(\"postalCode\");\r",
+									"    pm.expect(jsonData).to.have.property(\"country\");\r",
+									"    pm.expect(jsonData).to.have.property(\"owner\");\r",
+									"    });\r",
+									"\r",
+									"pm.test(\"Data types are correct\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData._id).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.firstName).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.email).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Response time is less than 500ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(500);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Contact Found Successfully\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(404);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Request data are correct\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Authorized Successfully\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(401);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							],
+							"query": [
+								{
+									"key": "firstName",
+									"value": "Mohammad",
+									"disabled": true
+								},
+								{
+									"key": "lastName",
+									"value": "Badawi",
+									"disabled": true
+								},
+								{
+									"key": "birthdate",
+									"value": "1992-02-02",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "amiller@fake.com",
+									"disabled": true
+								},
+								{
+									"key": "phone",
+									"value": "\t8005554242",
+									"disabled": true
+								},
+								{
+									"key": "street1",
+									"value": "13 School St.",
+									"disabled": true
+								},
+								{
+									"key": "street2",
+									"value": "Apt. 5",
+									"disabled": true
+								},
+								{
+									"key": "city",
+									"value": "Washington",
+									"disabled": true
+								},
+								{
+									"key": "stateProvince",
+									"value": "QC",
+									"disabled": true
+								},
+								{
+									"key": "postalCode",
+									"value": "A1A1A1",
+									"disabled": true
+								},
+								{
+									"key": "country",
+									"value": "Canada",
+									"disabled": true
+								},
+								{
+									"key": "owner",
+									"value": "687b79e5eb4e26001562dd94",
+									"disabled": true
+								},
+								{
+									"key": "__v",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": ":id",
+									"value": "687b7a55eb4e26001562dd96",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Get Contact",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{contactId}}",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts",
+										"{{contactId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6085a221fcfc72405667c3d4\",\n    \"firstName\": \"John\",\n    \"lastName\": \"Doe\",\n    \"birthdate\": \"1970-01-01\",\n    \"email\": \"jdoe@fake.com\",\n    \"phone\": \"8005555555\",\n    \"street1\": \"1 Main St.\",\n    \"street2\": \"Apartment A\",\n    \"city\": \"Anytown\",\n    \"stateProvince\": \"KS\",\n    \"postalCode\": \"12345\",\n    \"country\": \"USA\",\n    \"owner\": \"6085a21efcfc72405667c3d4\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Test Missing Fields...",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"const url = `https://thinking-tester-contact-list.herokuapp.com/contacts/${pm.environment.get(\"id\")}`;\r",
+									"const token = pm.environment.get(\"authToken\");\r",
+									"\r",
+									"const baseBody = {\r",
+									"    firstName: \"Mohammad\",\r",
+									"    lastName: \"Badawi\",\r",
+									"    birthdate: \"1975-01-01\",\r",
+									"    email: \"badawi@example.com\",\r",
+									"    phone: \"0591234567\",\r",
+									"    street1: \"1 Main St.\",\r",
+									"    street2: \"Apartment A\",\r",
+									"    city: \"Anytown\",\r",
+									"    stateProvince: \"KS\",\r",
+									"    postalCode: \"12345\",\r",
+									"    country: \"USA\"\r",
+									"};"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const url = `https://thinking-tester-contact-list.herokuapp.com/contacts/${pm.environment.get(\"id\")}`;\r",
+									"const token = pm.environment.get(\"authToken\");\r",
+									"\r",
+									"const baseBody = {\r",
+									"    firstName: \"Mohammad\",\r",
+									"    lastName: \"Badawi\",\r",
+									"    birthdate: \"1975-01-01\",\r",
+									"    email: \"badawi@example.com\",\r",
+									"    phone: \"0591234567\",\r",
+									"    street1: \"1 Main St.\",\r",
+									"    street2: \"Apartment A\",\r",
+									"    city: \"Anytown\",\r",
+									"    stateProvince: \"KS\",\r",
+									"    postalCode: \"12345\",\r",
+									"    country: \"USA\"\r",
+									"};\r",
+									"\r",
+									"pm.environment.set(\"baseBody\", baseBody);\r",
+									"        \r",
+									"var badawienvbody = baseBody;\r",
+									"pm.globals.set(\"baseBody\" , badawienvbody);\r",
+									"\r",
+									"const fields = [\"firstName\", \"lastName\", \"birthdate\", \"email\", \"phone\", \"street1\", \"street2\", \"city\", \"stateProvince\", \"postalCode\", \"country\" ];\r",
+									"\r",
+									"fields.forEach((field, index) => {\r",
+									"    const testBody = { ...baseBody };\r",
+									"    delete testBody[field];\r",
+									"\r",
+									"    pm.sendRequest({\r",
+									"        url: url,\r",
+									"        method: 'PUT',\r",
+									"        header: {\r",
+									"            \"Content-Type\": \"application/json\",\r",
+									"            \"Authorization\": `Bearer ${token}`\r",
+									"        },\r",
+									"        body: {\r",
+									"            mode: \"raw\",\r",
+									"            raw: JSON.stringify(testBody)\r",
+									"        }\r",
+									"    }, function (err, res) {\r",
+									"        console.log(`Test ${index + 1}: Missing ${field}`);\r",
+									"        console.log(`Response code: ${res.code}`);\r",
+									"        console.log(res.json());\r",
+									"\r",
+									"\r",
+									"        pm.test(`Missing: '${field}' is  okay?`, function () {\r",
+									"            pm.expect(res.code).to.eql(200);\r",
+									"        });\r",
+									"    });\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{{baseBody}}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status is 200 OK\", () => {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"birthdate updated correctly\", () => {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.birthdate).to.eql(\"1996-05-26\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Data types are correct\", function () {\r",
+									"    const jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.firstName).to.be.a(\"string\");\r",
+									"    pm.expect(jsonData.lastName).to.be.a(\"string\");\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"firstName and lastName exist in response\", function () {\r",
+									"    var res = pm.response.json();\r",
+									"\r",
+									"    pm.expect(res).to.have.property(\"firstName\");\r",
+									"    pm.expect(res.firstName).to.not.be.null;\r",
+									"    pm.expect(res.firstName).to.not.be.undefined;\r",
+									"\r",
+									"    pm.expect(res).to.have.property(\"lastName\");\r",
+									"    pm.expect(res.lastName).to.not.be.null;\r",
+									"    pm.expect(res.lastName).to.not.be.undefined;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Response fields are not null\", function () {\r",
+									"    var res = pm.response.json();\r",
+									"\r",
+									"    pm.expect(res.firstName).to.not.be.null;\r",
+									"    pm.expect(res.lastName).to.not.be.null;\r",
+									"    pm.expect(res.birthdate).to.not.be.null;\r",
+									"    pm.expect(res.email).to.not.be.null;\r",
+									"    pm.expect(res.phone).to.not.be.null;\r",
+									"    pm.expect(res.street1).to.not.be.null;\r",
+									"    pm.expect(res.street2).to.not.be.null;\r",
+									"    pm.expect(res.city).to.not.be.null;\r",
+									"    pm.expect(res.stateProvince).to.not.be.null;\r",
+									"    pm.expect(res.postalCode).to.not.be.null;\r",
+									"    pm.expect(res.country).to.not.be.null;\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Print data types of response fields\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"\r",
+									"    for (let key in res) {\r",
+									"        console.log(`Field: ${key}, Type: ${typeof res[key]}`);\r",
+									"    }\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"firstName should not exceed 100 characters\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"\r",
+									"    pm.expect(res.firstName.length).to.be.at.most(100);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Request data are correct\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(400);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Authorized Successfully\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(401);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"pm.test(\"Contact found successfully\", function () {\r",
+									"    pm.expect(pm.response.code).not.to.eql(404);\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Mohammad\",\n    \"lastName\": \"Badawi\",\n    \"birthdate\": \"1996-05-26\",\n    \"email\": \"mohammad@badawi.com\",\n    \"phone\": \"0566123456\",\n    \"street1\": \"Rafedia St.\",\n    \"street2\": \"Bulding A\",\n    \"city\": \"Nablus\",\n    \"stateProvince\": \"West Bank\",\n    \"postalCode\": \"00970\",\n    \"country\": \"Palestine\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Update Contact",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Amy\",\n    \"lastName\": \"Miller\",\n    \"birthdate\": \"1992-02-02\",\n    \"email\": \"amiller@fake.com\",\n    \"phone\": \"8005554242\",\n    \"street1\": \"13 School St.\",\n    \"street2\": \"Apt. 5\",\n    \"city\": \"Washington\",\n    \"stateProvince\": \"QC\",\n    \"postalCode\": \"A1B2D4\",\n    \"country\": \"Canada\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{contactId}}",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts",
+										"{{contactId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6085a221fcfc72405667c3d4\",\n    \"firstName\": \"Amy\",\n    \"lastName\": \"Miller\",\n    \"birthdate\": \"1992-02-02\",\n    \"email\": \"amiller@fake.com\",\n    \"phone\": \"8005554242\",\n    \"street1\": \"13 School St.\",\n    \"street2\": \"Apt. 5\",\n    \"city\": \"Washington\",\n    \"stateProvince\": \"QC\",\n    \"postalCode\": \"A1A1A1\",\n    \"country\": \"Canada\"\n    \"owner\": \"6085a21efcfc72405667c3d4\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Updated Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Print data types of response fields\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"\r",
+									"    for (let key in res) {\r",
+									"        console.log(`Field: ${key}, Type: ${typeof res[key]}`);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"First Name updated successfully to Sami\", () => {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.firstName).to.eql(\"Sami\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Birthdate updated successfully to 2006-03-20\", () => {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.birthdate).to.eql(\"2006-03-20\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Email updated successfully to sami@badawi.com\", () => {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.email).to.eql(\"sami@badawi.com\");\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Phone Number updated successfully 0569123456\", () => {\r",
+									"    const res = pm.response.json();\r",
+									"    pm.expect(res.phone).to.eql(\"0569123456\");\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"Sami\",\n    \"birthdate\": \"2006-03-20\",\n    \"email\": \"sami@badawi.com\",\n    \"phone\": \"0569123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						},
+						"description": "The PATCH Update Contact operation is not available through the UI."
+					},
+					"response": [
+						{
+							"name": "Update Contact",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"firstName\": \"Anna\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{contactId}}",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts",
+										"{{contactId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "{\n    \"_id\": \"6085a221fcfc72405667c3d4\",\n    \"firstName\": \"Anna\",\n    \"lastName\": \"Miller\",\n    \"birthdate\": \"1992-02-02\",\n    \"email\": \"amiller@fake.com\",\n    \"phone\": \"8005554242\",\n    \"street1\": \"13 School St.\",\n    \"street2\": \"Apt. 5\",\n    \"city\": \"Washington\",\n    \"stateProvince\": \"QC\",\n    \"postalCode\": \"A1B2D4\",\n    \"country\": \"Canada\"\n    \"owner\": \"6085a21efcfc72405667c3d4\",\n    \"__v\": 0\n}"
+						}
+					]
+				},
+				{
+					"name": "Get Patched Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Print data types of response fields\", function () {\r",
+									"    const res = pm.response.json();\r",
+									"\r",
+									"    for (let key in res) {\r",
+									"        console.log(`Field: ${key}, Type: ${typeof res[key]}`);\r",
+									"    }\r",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Contact",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"pm.test(\"Deletion success message received\", function () {",
+									"    pm.response.to.have.body(\"Contact deleted\");",
+									"});"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{id}}",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"contacts",
+								"{{id}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Delete Contact",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/contacts/{{contactId}}",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"contacts",
+										"{{contactId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": "Contact deleted"
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{authToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{authToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+							"protocol": "https",
+							"host": [
+								"thinking-tester-contact-list",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"me"
+							]
+						},
+						"description": "The DELETE User operation is not available through the UI."
+					},
+					"response": [
+						{
+							"name": "Delete User",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{token}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://thinking-tester-contact-list.herokuapp.com/users/me",
+									"protocol": "https",
+									"host": [
+										"thinking-tester-contact-list",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"users",
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "Text",
+							"header": [],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authToken}}",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"packages": {},
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "testCases",
+			"value": ""
+		},
+		{
+			"key": "testIndex",
+			"value": ""
+		}
+	]
+}
